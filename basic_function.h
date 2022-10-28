@@ -1,0 +1,5 @@
+#ifndef BASIC_FUNCTION
+#define BASIC_FUNCTION
+
+
+#endif /* BASIC_FUNCTION */
