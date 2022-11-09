@@ -93,7 +93,7 @@ void Move_Snake(int x, int y) {
   background[body[head.len - 1].y][body[head.len - 1].x] = EMPTY;
 
   // change the coordinate of body
-  for (int i = head.len - 1; i > 0; i--) {
+  for (int i = head.len - 1; i >= 0; i--) {
     body[i].x = body[i - 1].x;
     body[i].y = body[i - 1].y;
   }
@@ -110,7 +110,7 @@ void Move_Snake(int x, int y) {
   head.y = head.y + y;
 
   // mark the change part
-  background[head.y][head.x] = BODY;
+  background[head.y][head.x] = HEAD;
 
   Draw_Snake(1);
 }
@@ -136,10 +136,27 @@ void Control_Snake() {
   }
 }
 
-// Read the keyboard
-void Read_Keyboard() {
-  int a = 0;
-  scanf("%d", &a);
+// Start Game
+void Game() {
+  direction = LEFT;  // define the default direction of snake: left
+  int tmp = 0;       // use to record the moving direction of last time
+  while (_kbhit()) {
+    direction = getch();
+    switch (direction) {
+      case UP:
+      Move_Snake(0, -1);
+      break;
+    case DOWN:
+      Move_Snake(0, 1);
+      break;
+    case LEFT:
+      Move_Snake(-1, 0);
+      break;
+    case RIGHT:
+      Move_Snake(1, 0);
+      break;
+    }
+  }
 }
 
 // Show 2D Arry

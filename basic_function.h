@@ -15,10 +15,10 @@
 #define BODY 4
 
 enum Direction {
-    UP = 0,
-    DOWN,
-    LEFT,
-    RIGHT
+    UP = 72,
+    DOWN = 80,
+    LEFT = 75,
+    RIGHT = 77
 };
 
 extern int background[HEIGHT][WIDTH];
@@ -47,6 +47,7 @@ extern void Draw_Snake();
 extern void Move_Snake(int x, int y);
 extern void Control_Snake();
 extern void Read_KeyBoard();
+extern void Game();
 
 //debug
 extern void Show_2D_Arry(int *arry,int col, int row);
