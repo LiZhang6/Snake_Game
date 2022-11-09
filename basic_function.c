@@ -140,7 +140,8 @@ void Control_Snake() {
 void Game() {
   direction = LEFT;  // define the default direction of snake: left
   int tmp = 0;       // use to record the moving direction of last time
-  while (_kbhit()) {
+  while(1){
+     while (_kbhit()) {
     direction = getch();
     switch (direction) {
       case UP:
@@ -157,6 +158,8 @@ void Game() {
       break;
     }
   }
+  }
+ 
 }
 
 // Show 2D Arry
