@@ -1,7 +1,7 @@
 #include "basic_function.h"
 
 int main() {
-  srand((unsigned)time(NULL));  // create random seed 
+  srand((unsigned)time(NULL));  // create random seed
   Hide_Cursor();
   Init_Background();
   Init_Food();

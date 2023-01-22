@@ -1,6 +1,6 @@
 #include "basic_function.h"
 
-int background[HEIGHT][WIDTH] = {0};
+int background[HEIGHT][WIDTH] = {0};  
 SH head;
 SB body[HEIGHT * WIDTH];
 enum Direction direction = 0;
