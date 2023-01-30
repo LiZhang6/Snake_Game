@@ -66,39 +66,39 @@ For windows:
   
 2.2 在vscode中输入Ctrl+Shift+P调出vscode控制台，输入task，生成一个tasks.json文件，并替换为如下内容。
 
-  {
-      "version": "2.0.0",
-      "options": {
-          "cwd": "${workspaceFolder}/build"
-      },
-      "tasks": [
-          {
-              "type": "shell",
-              "label": "cmake", //第一个动作，执行cmake
-              "command": "cmake",
-              "args": [
-                  ".."
-              ]
-          },
-          {
-              "label": "make", //第二个动作，执行make
-              "group": {
-                  "kind": "build",
-                  "isDefault": true
-              },
-              "command": "mingw32-make",
-              "args": []
-          },
-          {
-              "label": "Build", //把上面的两个动作绑定，命名为Build
-              "dependsOrder": "sequence",
-              "dependsOn": [
-                  "cmake",
-                  "make"
-              ]
-          }
-      ]
-  }
+	  {
+	      "version": "2.0.0",
+	      "options": {
+		  "cwd": "${workspaceFolder}/build"
+	      },
+	      "tasks": [
+		  {
+		      "type": "shell",
+		      "label": "cmake", //第一个动作，执行cmake
+		      "command": "cmake",
+		      "args": [
+			  ".."
+		      ]
+		  },
+		  {
+		      "label": "make", //第二个动作，执行make
+		      "group": {
+			  "kind": "build",
+			  "isDefault": true
+		      },
+		      "command": "mingw32-make",
+		      "args": []
+		  },
+		  {
+		      "label": "Build", //把上面的两个动作绑定，命名为Build
+		      "dependsOrder": "sequence",
+		      "dependsOn": [
+			  "cmake",
+			  "make"
+		      ]
+		  }
+	      ]
+	  }
 
 
 
@@ -135,7 +135,7 @@ For windows:
       ]
   }
 
-3. 自动调整google style programme guide
+3.自动调整google style programme guide
 
 3.1 自动调整
 
@@ -143,16 +143,18 @@ For windows:
 
 3.2 在vscode中创建setting.json,并替换为如下内容。
 
-  {
-      "C_Cpp.clang_format_path": "C:\\Program Files\\LLVM\\bin\\clang-format.exe", // 谷歌代码风格自动更改内容
-      "files.associations": {
-          "cstdio": "c",
-          "stdio.h": "c",
-          "cwchar": "c",
-          "type_traits": "c",
-          "typeinfo": "c",
-          "random": "c"
-      }
-  } 
+	  {
+	      "C_Cpp.clang_format_path": "C:\\Program Files\\LLVM\\bin\\clang-format.exe", // 谷歌代码风格自动更改内容
+	      "files.associations": {
+		  "cstdio": "c",
+		  "stdio.h": "c",
+		  "cwchar": "c",
+		  "type_traits": "c",
+		  "typeinfo": "c",
+		  "random": "c"
+	      }
+	  } 
 
+For linux:
 
+	Same as the windows. 
