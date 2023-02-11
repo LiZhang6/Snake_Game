@@ -4,7 +4,7 @@ int background[HEIGHT][WIDTH] = {0};
 SH head;
 SB body[HEIGHT * WIDTH];
 enum Direction direction = 0;
-// int food_position_x = 0, food_position_y = 0;
+int food_position_x = 0, food_position_y = 0;
 
 // Initialize background
 void Init_Background() {
