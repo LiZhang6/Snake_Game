@@ -1,9 +1,10 @@
 #include "basic_function.h"
 
-int background[HEIGHT][WIDTH] = {0};  
+int background[HEIGHT][WIDTH] = {0};
 SH head;
 SB body[HEIGHT * WIDTH];
 enum Direction direction = 0;
+// int food_position_x = 0, food_position_y = 0;
 
 // Initialize background
 void Init_Background() {
@@ -44,16 +45,15 @@ void Move_Cursor(int x, int y) {
 
 // Initialize a food
 void Init_Food() {
-  int i = 0, j = 0;
   int rand_num = rand();
   do {
-    i = rand_num % WIDTH;
-    j = rand_num % HEIGHT;
+    food_position_x = rand_num % WIDTH;
+    food_position_y = rand_num % HEIGHT;
 
-  } while (background[j][i] != EMPTY);
-  Move_Cursor(i, j);
+  } while (background[food_position_y][food_position_x] != EMPTY);
+  Move_Cursor(food_position_x, food_position_y);
   printf("#");
-  background[j][i] = FOOD;
+  background[food_position_y][food_position_x] = FOOD;
 }
 // Initialize a snake
 void Init_Snake() {
@@ -116,7 +116,7 @@ void Move_Snake(int x, int y) {
 }
 
 // control the snake
-void Control_Snake() {
+void Control_Snake(int direction) {
   switch (direction) {
     case UP:
       Move_Snake(0, -1);
@@ -130,9 +130,19 @@ void Control_Snake() {
     case RIGHT:
       Move_Snake(1, 0);
       break;
-    default:
-      Move_Snake(1, 0);
-      break;
+  }
+}
+
+//
+void Judgement(int x, int y) {
+  if (head.x == food_position_x && head.y == food_position_y) {
+    head.len++;
+  } else if (background[head.y][head.x] == WALL ||
+             background[head.y][head.x] == BODY) {
+    Move_Cursor(HEIGHT / 2, WIDTH / 2);
+    printf("Game Over!");
+    sleep("100");
+    return;
   }
 }
 
@@ -140,28 +150,14 @@ void Control_Snake() {
 void Game() {
   direction = LEFT;  // define the default direction of snake: left
   int tmp = 0;       // use to record the moving direction of last time
-  while(1){
-     while (_kbhit()) {
-    direction = getch();
-    switch (direction) {
-      case UP:
-      Move_Snake(0, -1);
-      break;
-    case DOWN:
-      Move_Snake(0, 1);
-      break;
-    case LEFT:
-      Move_Snake(-1, 0);
-      break;
-    case RIGHT:
-      Move_Snake(1, 0);
-      break;
+  while (1) {
+    while (_kbhit()) {
+      direction = getch();
+      Control_Snake(direction);
+      Judgement(head.y, head.x);
     }
   }
-  }
- 
 }
-
 // Show 2D Arry
 void Show_2D_Arry(int *arry, int col, int row) {
   int i = 0, j = 0;
