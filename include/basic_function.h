@@ -38,8 +38,8 @@ Init_Snake();  // initiate snake and place the snake in the middle of screen
 extern void Hide_Cursor();              // hide the cursor
 extern void Move_Cursor(int x, int y);  // move the cursor
 
-extern void
-Draw_Snake();  // prameter = 1 : draw a snake   prameter != 0 : move cursor
+
+extern void Draw_Snake(int flag);  // prameter = 1 : draw a snake   prameter != 0 : move cursor
 extern void Move_Snake(int x, int y);
 extern void Control_Snake(int direction);
 extern void Read_KeyBoard();

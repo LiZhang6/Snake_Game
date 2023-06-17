@@ -137,12 +137,13 @@ void Control_Snake(int direction) {
 void Judgement(int x, int y) {
   if (head.x == food_position_x && head.y == food_position_y) {
     head.len++;
-  } else if (background[head.y][head.x] == WALL ||
-             background[head.y][head.x] == BODY) {
+    Init_Food();
+  } else if (head.x >= WIDTH || head.x < 0 || head.y >= HEIGHT || head.y < 0) {
+    Sleep(10000);
     Move_Cursor(HEIGHT / 2, WIDTH / 2);
     printf("Game Over!");
-    sleep("100");
-    return;
+
+    exit(0);
   }
 }
 
